@@ -50,12 +50,18 @@ WHERE winner LIKE 'John%'
 -- (WARNING - this question is way too hard for this level, you will need to use
 -- sub queries or joins).
 
-SELECT DISTINCT p.yr
-FROM nobel p
-WHERE p.subject = 'Physics'
-AND p.yr NOT IN
-(
-  SELECT c.yr
-  FROM nobel c
-  WHERE c.subject = 'Chemistry'
-)
+SELECT * FROM nobel 
+WHERE (subject = 'Physics' AND yr = 1980) 
+OR (subject = 'Chemistry' AND yr = 1984)
+
+-- 9. Show the year, subject, and name of winners for 1980 excluding Chemistry and Medicine
+
+SELECT * FROM nobel 
+WHERE yr = 1980 
+AND NOT (subject = 'Chemistry' OR subject = 'Medicine')
+
+-- 10. Show year, subject, and name of people who won a 'Medicine' prize in an early year (before 1910, not including 1910) together with winners of a 'Literature' prize in a later year (after 2004, including 2004)
+
+SELECT * FROM nobel 
+WHERE (yr < 1910 AND subject = 'Medicine') 
+OR (yr >= 2004 AND subject = 'Literature')
