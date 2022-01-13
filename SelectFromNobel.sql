@@ -65,3 +65,20 @@ AND NOT (subject = 'Chemistry' OR subject = 'Medicine')
 SELECT * FROM nobel 
 WHERE (yr < 1910 AND subject = 'Medicine') 
 OR (yr >= 2004 AND subject = 'Literature')
+
+-- 11. Find all details of the prize won by PETER GRÜNBERG
+
+SELECT *
+FROM nobel
+WHERE winner LIKE 'peter gr%nberg'
+
+-- 12. Find all details of the prize won by EUGENE O'NEILL
+
+SELECT *
+FROM nobel
+WHERE winner LIKE 'Eugene O%Neill'
+
+-- 13. Knights in order
+
+-- List the winners, year and subject where the winner starts with Sir. Show the the most recent first, then by name order.
+
